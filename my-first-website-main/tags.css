@@ -1,0 +1,96 @@
+/* for the changing text */
+.tags-wrapper {
+    position: relative;
+    top: 0.5rem;
+    height: 3rem;
+
+    margin-bottom: 7vh;
+
+    overflow: hidden;
+	white-space: nowrap;
+	
+	background-color: var(--twhite);
+}
+
+.title-tags {
+    position: relative;
+    top: -0.25rem;
+
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: 'Oswald', bold, cursive;
+
+    color: black;
+
+    width: max-content;
+
+    animation: 
+		color-change 3s 1s ease infinite,
+		slide 9s steps(3) 1s infinite;
+}
+
+.title-tags li{
+    list-style: none;
+}
+
+.title-tags li span::before,
+.title-tags li span::after {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.title-tags li span::before {
+    background: transparent; /* #00CCFF; */
+	
+    animation: 
+		typewriter 3s 1s ease infinite;
+}
+
+.title-tags li span::after {
+    width: 0.125em;
+    background: black;
+    animation:
+        typewriter 3s 1s ease infinite,
+        blink 1000ms ease infinite;
+}
+
+@keyframes typewriter {
+    0% {
+        left: 0%;
+    }
+
+    40% {
+        left: 100%;
+    }
+
+    60% {
+        left: 100%;
+    }
+
+    100% {
+        left: 0%;
+    }
+}
+
+@keyframes blink {
+    to {
+        background: transparent;
+    }
+}
+
+@keyframes slide {
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes color-change {
+  0% { color: black; }
+  50% { color: black; }
+  100% { color: transparent; }
+}
