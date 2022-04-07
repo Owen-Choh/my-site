@@ -44,3 +44,41 @@ function PageTransitions(){
 }
 
 PageTransitions();
+
+//my own stuff
+
+function scriptForTimeline() {
+    const timeline = [['2020','VBA in National Service.'],
+        ['2022','Started this site.'],
+        ['Dec 2021','Learnt how to make my first site for fun.']];
+        
+    timeline.sort(function(a,b){
+        return new Date(b[0]) - new Date(a[0]);
+    });
+    console.log(timeline);
+
+    timeline.forEach(function(item, index){
+        // create a new div element
+        let newCon = document.createElement("div");
+        newCon.className = "timeline-con";
+        (index%2 == 0) ? newCon.classList.add("left") : newCon.classList.add("right");
+    
+        let newItem = document.createElement("div");
+        newItem.className = "timeline-item";
+        
+        // and give it some content
+        let newHDiv = document.createElement("h2");
+        newHDiv.innerHTML = item[0];
+
+        let newPDiv = document.createElement("p");
+        newPDiv.innerHTML = item[1];
+        
+        // add the text node to the newly created div
+        newItem.append(newHDiv,newPDiv);
+        newCon.appendChild(newItem);
+    
+        // add the newly created element and its content into the DOM
+        let currentDiv = document.getElementsByClassName("timeline")[0];
+        currentDiv.appendChild(newCon);
+    })
+}

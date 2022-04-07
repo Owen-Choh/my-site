@@ -19,6 +19,7 @@
     --color-grey-6: #12181b;
     --br-sm-2: 14px;
     --box-shadow-1: 0 3px 15px rgba(0,0,0,.3);
+    --box-shadow-2: 0 3px 20px 8px rgba(0,0,0,.3);
     --transition-inout: all .4s ease-in-out;
     --transition-out: all .4s ease-out;
 }
@@ -45,7 +46,7 @@ body{
     transition: var(--transition-inout);
 }
 a{
-    display: inline-block;
+    display: block;
     text-decoration: none;
     color: inherit;
     font-family: inherit;
@@ -57,57 +58,29 @@ header{
     overflow: hidden;
 }
 
-section{
+section {
     min-height: 100vh;
     width: 100%;
     position: absolute;
     left: 0;
     top: 0;
     padding: 3rem 18rem;
-}
+}   
 
-.section{
+.section {
+    display: none;
     transform: translateY(-100%) scale(0);
-    transition: var(--transition-inout);
+    transition: all .4s ease-in-out;
     background-color: var(--color-primary);
 }
 
-.sec1{
-    display: none;  
-    transform: translateY(0) scale(1);
-}
-
-.sec2{
-    display: none;  
-    transform: translateY(0) scale(1);
-}
-
-.sec3{
-    display: none;  
-    transform: translateY(0) scale(1);
-}
-
-.sec4{
-    display: none;  
-    transform: translateY(0) scale(1);
-}
-
-.sec5{
-    display: none;  
-    transform: translateY(0) scale(1);
-}
-
-.active{
+.active {
     display: block;
-    animation: scaleAnim 1s ease-in-out;
-    @keyframes scaleAnim {
-        0%{
-            transform: translateY(-100%) scaleY(1);
-        }
-
-        100%{
-            transform: translateY(0) scaleY(1);
-        }
+    animation: appear 1s ease-in-out;
+    transform: translateY(0) scaleY(1);
+    @keyframes appear {
+        0%{ transform: translateY(-100%) scaleY(1); }
+        100%{ transform: translateY(0) scaleY(1); }
     }
 }
 
@@ -164,7 +137,7 @@ section{
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 3px 15px rgba(0,0,0,.3);
+    box-shadow: var(--box-shadow-1);
     transition: all .1s ease-in-out;
     &:active{
         transform: translateY(-3px);
@@ -213,6 +186,7 @@ section{
                 object-fit: cover;
                 transition: var(--transition-inout);
                 filter: grayscale(100%);
+
                 &:hover{
                     filter: grayscale(0);
                 }
@@ -308,57 +282,6 @@ section{
     }
 }
 
-.about-stats{
-    padding-bottom: 4rem;
-
-    .progress-bars{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 2rem;
-
-        .progress-bar{
-            display: flex;
-            flex-direction: column;
-
-            .prog-title{
-                text-transform: uppercase;
-                font-weight: 500;
-            }
-
-            .progress-con{
-                display: flex;
-                align-items: center;
-
-                .prog-text{
-                    color: var(--color-grey-2);
-                }
-
-                .progress{
-                    width: 100%;
-                    height: .45rem;
-                    background-color: var(--color-grey-4);
-                    margin-left: 1rem;
-                    position: relative;
-
-                    span{
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        height: 100%;
-                        background-color: var(--color-secondary);
-                        transition: var(--transition-inout);
-                        width: 0%;
-                    }
-
-                    .html{
-                        width: 90%;
-                    }
-                }
-            }
-        }
-    }
-}
-
 .stat-title{
     text-transform: uppercase;
     font-size: 1.4rem;
@@ -373,6 +296,252 @@ section{
         height: 1px;
         background-color: var(--color-grey-5);
         transform: translateX(-50%);
+    }
+}
+
+.input-con {
+    width: 100%;
+    margin-bottom: 10px;
+
+    i{
+        position: absolute;
+        padding: 12px;
+        min-width: 40px;
+        color: black;
+    }
+    
+    .input-field {
+    width: 100%;
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    text-align: left;
+    }
+}
+  
+#skillTable {
+    border-collapse: collapse; /* Collapse borders */
+    width: 100%; /* Full-width */
+    border: 1px solid var(--color-grey-1); /* Add a grey border */
+    font-size: 18px; /* Increase font-size */
+
+    th, td {
+        text-align: left; /* Left-align text */
+        padding: 12px; /* Add padding */
+    }
+
+    td{
+        color: var(--color-grey-1)
+    }
+
+    tr {
+        /* Add a bottom border to all table rows */
+        border-bottom: 1px solid var(--color-grey-2);
+    }
+
+    tr.header, tr:hover {
+        /* Add a grey background color to the table header and on hover */
+        background-color: var(--color-grey-5);
+    }
+}
+
+//experience section
+/* The actual timeline (the vertical ruler) */
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    /* The actual timeline (the vertical ruler) */
+    &::after {
+        content: '';
+        position: absolute;
+        width: 6px;
+        background-color: var(--color-grey-1);
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -3px;
+    }
+}
+  
+/* Container around content */
+.timeline-con {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+
+    /* The circles on the timeline */
+    &::after {
+        content: '';
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        right: -17px;
+        background-color: var(--color-grey-1);
+        border: 4px solid var(--color-secondary);
+        top: 15px;
+        border-radius: 50%;
+        z-index: 1;
+    }
+}
+  
+/* Place the container to the left */
+.left {
+    left: 0;
+    
+    /* Add arrows to the left container (pointing right) */
+    &::before {
+        content: "";
+        position: absolute;
+        height: 30px;
+        width: 20px;
+        z-index: 1;
+        top: 17px;
+        right: 27px;
+        background-color: var(--color-grey-5);
+        clip-path: polygon(100% 50%, 0 0, 0 100%);
+    }
+}
+  
+/* Place the container to the right */
+.right {
+    left: 50%;
+
+    /* Add arrows to the right container (pointing left) */
+    &::before {
+        content: "";
+        position: absolute;
+        height: 30px;
+        width: 20px;
+        z-index: 1;
+        top: 17px;
+        left: 27px;
+        background-color: var(--color-grey-5);
+        clip-path: polygon(0 50%, 100% 0, 100% 100%);
+    }
+
+    /* Fix the circle for containers on the right side */
+    &::after {
+        left: -16px;
+    }
+}
+  
+/* The actual content */
+.timeline-item {
+    padding: 20px 30px;
+    background-color: var(--color-grey-5);
+    position: relative;
+    border-radius: 6px;
+    box-shadow: var(--box-shadow-2);
+    
+    h2{
+        color: var(--color-white);
+        transition: var(--transition-inout);
+    }
+
+    &:hover{
+        h2{
+            color: var(--color-secondary);
+        }
+    }
+
+    p{
+        color: var(--color-grey-2);
+        
+        span{
+            color: var(--color-secondary);
+        }
+    }
+}
+
+//portfolio
+.port-text{
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.portfolios{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+    margin-top: 3rem;
+    
+    .portfolio{
+        position: relative;
+        background-color: var(--color-grey-5);
+        border-radius: 5px;
+        box-shadow: 1px 1px 20px rgba(0,0,0,.1);
+        transition: var(--transition-inout);
+        
+        &:hover{
+            box-shadow: 1px 1px 20px rgba(0,0,0,.3);
+            transform: translateY(-5px);
+            transition: var(--transition-inout);
+
+            img{
+                filter: grayscale(0);
+                transform: scale(1.1);
+                box-shadow: 0px 4px 15px rgba(0,0,0,0.8);
+            }
+
+            .portfolio-text h4{
+                color: var(--color-secondary);
+            }
+        }
+
+        img{
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            filter: grayscale(100%);
+            transition: var(--transition-inout);
+        }
+
+        .portfolio-text{
+            margin-top: -7px;
+            padding: 1.1rem;
+            border-top: 8px solid var(--color-secondary);
+
+            h4{
+                font-size: 1.5rem;
+                margin-bottom: .7rem;
+                transition: var(--transition-inout);
+                cursor: pointer;
+            }
+
+            p{
+                color: var(--color-grey-2);
+                line-height: 2rem;
+                padding-bottom: 1rem;
+            }
+        }
+    }
+}
+
+//contact section
+.contact-content-con {
+    display: flex;
+    padding-top: 3.5rem;
+
+    .contact-info {
+        align-items: center;
+        width: 100%;
+        left: 50%;
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            span{
+                color: var(--color-secondary);
+            }
+            p {
+                margin: .3rem 0 !important;
+                padding: 0 !important;
+            }
+        }
     }
 }
 
@@ -436,6 +605,11 @@ section{
             color: var(--color-secondary);
         }
         .bg-text{
+            // bg text looks weird 
+            display: none;
+            scale: 0;
+            white-space: nowrap;
+
             position: absolute;
             top: 50%;
             left: 50%;
@@ -444,7 +618,17 @@ section{
             z-index: -1;
             transform: translate(-50%, -50%);
             font-weight: 800;
-            font-size: 6.3rem;
+            font-size: 4.3rem;
+        }
+
+        &::before{
+            content: '';
+            position: absolute;
+            left: 25%;
+            bottom: 0px;
+            width: 50%;
+            height: 2px;
+            background-color: var(--color-grey-5);
         }
     }
 }

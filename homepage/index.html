@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    <!-- https://owen-choh.github.io/my-site/homepage/ -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body class="main-content">
-    <header class="section sec1 header active" id="home">
+    <header class="section header active" id="home">
         <div class="header-content">
             <div class="left-header">
                 <div class="h-shape"></div>
@@ -28,11 +29,11 @@
                 </h1>
                 <p>
                     I'm a computer science student, I love learning and creating programs.
-                    I've created multiple projects which helped my team.
-                    You can find more information on my projects in the other sections.
+                    Which includes multiple projects which helped my team during National Service.
+                    You can find more information about me in the other sections.
                 </p>
                 <div class="btn-con">
-                    <a href="#" class="main-btn" target=TODO()>
+                    <a href="files/Owen's Resume.pdf" class="main-btn" target="_blank">
                         <span class="btn-text">Download CV</span>
                         <span class="btn-icon"><i class="fa-solid fa-download"></i></span>
                     </a>
@@ -41,7 +42,7 @@
         </div>
     </header>
     <main>
-        <section class="section sec2 about" id="about">
+        <section class="section" id="about">
             <div class="main-title">
                 <h2>About <span>me</span><span class="bg-text">My stats</span></h2>
             </div>
@@ -49,10 +50,11 @@
                 <div class="left-about">
                     <h4>Information About Me</h4>
                     <p>
-                        I'm a computer science student enrolled in the Nanyang Technological University in Singapore in Aug 2022.
+                        I'm a computer science student enrolled in the Nanyang Technological University in Singapore in Aug 2022. One of the things I am interested in is making scripts that help 
+                        people to do their work more easily and quickly as displayed in the multiple projects I worked on.
                     </p>
                     <div class="btn-con">
-                        <a href="#" class="main-btn">
+                        <a href="files/Owen's Resume.pdf" class="main-btn" target="_blank">
                             <span class="btn-text">Download CV</span>
                             <span class="btn-icon"><i class="fa-solid fa-download"></i></span>
                         </a>
@@ -61,58 +63,249 @@
                 <div class="right-about">
                     <div class="about-item">
                         <div class="abt-text">
-                            <p class="large-text">560+</p>
-                            <p class="small-text">Projects <br /> Completed</p>
+                            <p class="large-text">8</p>
+                            <p class="small-text">VBA Projects <br /> Completed</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="about-stats">
                 <h4 class="stat-title">My skills</h4>
-                <div class="progress-bars">
-                    <div class="progress-bar">
-                        <p class="prog-title">html5</p>
-                        <div class="progress-con">
-                            <p class="prog-text">90%</p>
-                            <div class="progress">
-                                <span class="html"></span>
-                            </div>
+                <div class="skill-con">
+                    <div class="input-con">
+                        <i class="fa-solid fa-magnifying-glass icon"></i>
+                        <input class="input-field" type="text" id="skill-input" onkeyup="searchSkills()" placeholder="Search for skill..">
+                    </div>
+                    <div class="skill-table">
+                        <table id="skillTable">
+                            <tr class="header">
+                                <th style="width:100%;">Skills</th>
+                            </tr>
+                            <tr>
+                                <td>Python</td>
+                            </tr>
+                            <tr>
+                                <td>Microsoft VBA</td>
+                            </tr>
+                            <tr>
+                                <td>JavaScript</td>
+                            </tr>
+                            <tr>
+                                <td>HTML</td>
+                            </tr>
+                            <tr>
+                                <td>CSS</td>
+                            </tr>
+                            <tr>
+                                <td>Microsoft Office (Excel, Word, PowerPoint)</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <script>
+                        function searchSkills() {
+                          // Declare variables
+                          var input, filter, table, tr, td, i, txtValue;
+                          input = document.getElementById("skill-input");
+                          filter = input.value.toUpperCase();
+                          table = document.getElementById("skillTable");
+                          tr = table.getElementsByTagName("tr");
+                        
+                          // Loop through all table rows, and hide those who don't match the search query
+                          for (i = 0; i < tr.length; i++) {
+                            td = tr[i].getElementsByTagName("td")[0];
+                            if (td) {
+                              txtValue = td.textContent || td.innerText;
+                              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                tr[i].style.display = "";
+                              } else {
+                                tr[i].style.display = "none";
+                              }
+                            }
+                          }
+                        }
+                        </script>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="portfolios">
+            <div class="portfolios-content">
+                <div class="main-title">
+                    <h2>My <span>Portfolio</span><span class="bg-text">My work</span></h2>
+                </div>
+                <p class="port-text">
+                    Here's some of my work.<br>
+                    (Hint: Click on the image)
+                </p>
+                <div class="portfolios">
+                    <div class="portfolio">
+                        <a href="https://youtu.be/xV7S8BhIeBo" target="_blank">
+                            <img src="img/my image.png" alt="">
+                        </a>
+                        <div class="portfolio-text">
+                            <h4>
+                                How to Create Your Own Website
+                            </h4>
+                            <p>
+                                If you like to create your own website, this is the tutorial I followed to create this website.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="portfolio">
+                        <a href="https://owen-choh.github.io/my-site/my-first-website-main/" target="_blank">
+                            <img src="img/big image.png" alt="">
+                        </a>
+                        <div class="portfolio-text">
+                            <h4>
+                                My First Website
+                            </h4>
+                            <p>
+                                Made this following a workshop during my National Service.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="portfolio">
+                        <a href="https://docs.microsoft.com/en-us/office/vba/library-reference/concepts/getting-started-with-vba-in-office" target="_blank">
+                            <img src="img/Microsoft_Excel_VBA.png" alt="" style="object-fit: fill;">
+                        </a>
+                        <div class="portfolio-text">
+                            <h4>
+                                Automation with Microsoft VBA
+                            </h4>
+                            <p>
+                                I made multiple automation scripts in VBA to automate data processing. However, I can't put my NS projects here due to restriction, but you can learn about what VBA is in the link.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="section sec3 portfolio" id="portfolio">
+        <section class="section" id="experience">
             <div class="main-title">
-                <h2>My <span>Portfolio</span><span class="bg-text">My work</span></h2>
+                <h2>My <span>Experience</span><span class="bg-text">My Timeline</span></h2>
             </div>
+            <div class="timeline">
+                <!-- timeline -->
+                <script type="text/javascript">
+                    const timeline = [['2020',`Posted to my unit, Singapore Armed Forces Ammunition Command Headquarters (HQ SAFAC) as a General Affiars Clerk. 
+                    My primary responsibility was to collaborated with the 16 different branches of the unit to meet KPIs consistently.
+                    I was also required to aid my superior in writing reports and collating requests from other branches.
+                    During my time, I also spearheaded the indenting of the care package that was distributed across the Unit.
+                    <span>More importantly</span>, 
+                    I picked up and became proficient in <span>Microsoft VBA</span> while serving National Service, which I employed to create multiple automation scripts used across the HR branch of HQ SAFAC
+                    , substantially reducing the workload and time required for our admin processes.`]
+                        ,['2022','<span>Started this site.</span>']
+                        ,['Dec 2021','Learnt how to make <span>my first site</span> through a workshop. It has many flaws but the page was just for fun.']
+                        ,['Before...','I started learning programming on Codecademy however I did not document when I started learning these skills. But it was were I learnt the basics of programming and the major languages I picked up were <span>Python</span> and <span>JavaScript</span>']
+                        ,['Aug 2022','Began my <span>Computer Science Degree</span> in Nanyang Technological University in Singapore']
+                        ,['Jan 2022',"Completed the course: <span>CS50's Introduction to Computer Science</span>"]
+                    ];
+
+                    timeline.sort(function(a,b){
+                        return new Date(b[0]) - new Date(a[0]);
+                    });
+
+                    timeline.forEach(function(item, index){
+                        // create a new div element
+                        let newCon = document.createElement("div");
+                        newCon.className = "timeline-con";
+                        (index%2 == 0) ? newCon.classList.add("left") : newCon.classList.add("right");
+                    
+                        let newItem = document.createElement("div");
+                        newItem.className = "timeline-item";
+                        
+                        // and give it some content
+                        let newHDiv = document.createElement("h2");
+                        newHDiv.innerHTML = item[0];
+
+                        let newPDiv = document.createElement("p");
+                        newPDiv.innerHTML = item[1];
+                        
+                        // add the text node to the newly created div
+                        newItem.append(newHDiv,newPDiv);
+                        newCon.appendChild(newItem);
+                    
+                        // add the newly created element and its content into the DOM
+                        let currentDiv = document.getElementsByClassName("timeline")[0];
+                        currentDiv.appendChild(newCon);
+                    })
+                </script>
+              </div>
         </section>
-        <section class="section sec4 blogs" id="blogs">
+        <section class="section" id="contact">
             <div class="main-title">
-                <h2>About <span>me</span><span class="bg-text">My stats</span></h2>
+                <h2>Contact <span>me</span><span class="bg-text">My stats</span></h2>
             </div>
-        </section>
-        <section class="section sec5 contact" id="contact">
-            <div class="main-title">
-                <h2>About <span>me</span><span class="bg-text">My stats</span></h2>
-            </div>
+            <div class="contact-content-con">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Location</span>
+                        </div>
+                        <p>
+                            : Singapore
+                        </p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email</span>
+                        </div>
+                        <p>
+                            : maclinzuniversal@gmail.com
+                        </p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">
+                            <i class="fas fa-user-graduate"></i>
+                            <span>Education</span>
+                        </div>
+                        <p>
+                            : Nanyang Technological University, Singapore
+                        </p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>Mobile Number</span>
+                        </div>
+                        <p>
+                            : 96465905
+                        </p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">
+                            <i class="fas fa-globe-africa"></i>
+                            <span>Languages</span>
+                        </div>
+                        <p>
+                            : English, Mandarin
+                        </p>
+                    </div>
+                    <div class="btn-con" style="justify-content: center; padding-top: 0.5rem;">
+                        <a href="files/Owen's Resume.pdf" class="main-btn" target=TODO()>
+                            <span class="btn-text">Download CV</span>
+                            <span class="btn-icon"><i class="fa-solid fa-download"></i></span>
+                        </a>
+                    </div>
+                </div>
         </section>
     </main>
 
     <div class="controls">
-        <div class="control control-1 active-btn" data-id="home">
+        <div class="control active-btn" data-id="home">
             <i class="fa-solid fa-house"></i>
         </div>
-        <div class="control control-2" data-id="about">
+        <div class="control" data-id="about">
             <i class="fa-solid fa-user"></i>
         </div>
-        <div class="control control-3" data-id="portfolio">
-            <i class="fa-solid fa-briefcase"></i>
-        </div>
-        <div class="control control-4" data-id="blogs">
+        <div class="control" data-id="experience">
             <i class="fa-solid fa-newspaper"></i>
         </div>
-        <div class="control control-5" data-id="contact">
+        <div class="control" data-id="portfolios">
+            <i class="fa-solid fa-briefcase"></i>
+        </div>
+        <div class="control" data-id="contact">
             <i class="fa-solid fa-envelope"></i>
         </div>
     </div>
