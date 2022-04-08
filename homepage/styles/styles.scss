@@ -219,7 +219,7 @@ section {
     display:grid;
     grid-template-columns: repeat(2, 1fr);
     padding-top: 3.5rem;
-    padding-bottom: 5rem;
+    padding-bottom: 3rem;
 
     .right-about{
         display:grid;
@@ -231,6 +231,8 @@ section {
             border-radius: 5px;
             transition: var(--transition-inout);
             box-shadow: 1px 2px 15px rgba(0,0,0,.1);
+            min-height: 15rem;
+            height: 15rem;
             &:hover{
                 cursor: default;
                 transform: translateY(-5px);
@@ -291,11 +293,12 @@ section {
     &::before {
         content: "";
         left: 50%;
-        top: 0;
+        bottom: 30%;
         width: 40%;
         height: 1px;
         background-color: var(--color-grey-5);
         transform: translateX(-50%);
+        position: absolute;
     }
 }
 
@@ -347,7 +350,7 @@ section {
 /* The actual timeline (the vertical ruler) */
 .timeline {
     position: relative;
-    max-width: 1200px;
+    max-width: 1500px;
     margin: 0 auto;
 
     /* The actual timeline (the vertical ruler) */
@@ -632,3 +635,5 @@ section {
         }
     }
 }
+
+@import './media';
