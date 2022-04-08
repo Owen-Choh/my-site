@@ -1013,7 +1013,7 @@ section {
     padding: .5rem 2.5rem;
   }
   body {
-    font-size: .9rem;
+    font-size: 1rem;
   }
   header {
     padding: 0;
@@ -1021,7 +1021,7 @@ section {
   header .header-content {
     -ms-grid-columns: (1fr)[1];
         grid-template-columns: repeat(1, 1fr);
-    padding-bottom: 6rem;
+    padding-bottom: 4.5rem;
   }
   header .header-content .left-header .h-shape {
     display: none;

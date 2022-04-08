@@ -210,7 +210,7 @@
         top: 3%;
         opacity: 80%;
     }
-
+    //go up from bottom
     .active {
         display: block;
         animation: appear 1s ease-in-out;
@@ -226,7 +226,7 @@
     }
 
     body{
-        font-size: .9rem;
+        font-size: 1rem;
     }
 
     header {
@@ -234,7 +234,7 @@
 
         .header-content{
             grid-template-columns: repeat(1, 1fr);
-            padding-bottom: 6rem;
+            padding-bottom: 4.5rem;
                     
             .left-header{
                 .h-shape{
