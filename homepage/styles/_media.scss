@@ -101,7 +101,7 @@
     }
 }
 
-
+//reformat timeline
 @media screen and (max-width:900px){
     .timeline{
         padding-bottom: 6rem;
@@ -208,10 +208,25 @@
         width: 50px;
         height: 50px;
         top: 3%;
+        opacity: 80%;
+    }
+
+    .active {
+        display: block;
+        animation: appear 1s ease-in-out;
+        transform: translateY(0) scaleY(1);
+        @keyframes appear {
+            0%{ transform: translateY(100%) scaleY(1); }
+            100%{ transform: translateY(0) scaleY(1); }
+        }
     }
 
     .section{
-        padding: 2rem 2.5rem;
+        padding: .5rem 2.5rem;
+    }
+
+    body{
+        font-size: .9rem;
     }
 
     header {
@@ -240,7 +255,11 @@
                 .name{
                     font-size: 2.5rem !important;
                     text-align: center;
-                    padding-top: 3rem;
+                    padding-top: 0.5rem;
+                }
+                p{
+                    margin: 0.7rem 0;
+                    line-height: 1.2rem;
                 }
             }
         }
@@ -248,21 +267,38 @@
 
     .about-container{
         grid-template-columns: repeat(1, 1fr);
+        padding-top: 1.5rem;
         .right-about{
             grid-template-columns: repeat(1, 1fr);
             padding-top: 2.5rem;
         }
         .left-about{
             padding-right: 0;
+            h4{
+                font-size: 1.4rem;
+            }
             p{
-                padding-left: 0;
+                padding: 1rem 0;
+                line-height: 1.3rem;
             }
         }
     }
     .about-stats{
         padding-bottom: 5rem;
+        .stat-title{
+            padding: 0;
+            padding-bottom: 3.5rem;
+        }
     }
 
+    .timeline-item{
+        padding: 10px 16px;
+    }
+
+    .port-text{
+        padding: 0;
+        padding-top: 1rem;
+    }
     .portfolios{
         grid-template-columns: repeat(1, 1fr);
         padding-bottom: 6rem;
@@ -271,7 +307,8 @@
 
     .contact-content-con{
         flex-direction: column;
-    
+        padding-top: 1rem;
+
         .contact-item{
             flex-direction: column;
             margin: 1rem 0;
@@ -294,6 +331,13 @@
             span{
                 font-size: 2.3rem;
             }
+        }
+    }
+
+    .btn-con{
+        align-self: center;
+        .btn-icon{
+            padding: 0.5rem;
         }
     }
 }

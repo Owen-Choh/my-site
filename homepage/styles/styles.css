@@ -364,6 +364,13 @@ section {
 
 .about-container .left-about {
   padding-right: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .about-container .left-about p {
@@ -973,9 +980,40 @@ section {
     width: 50px;
     height: 50px;
     top: 3%;
+    opacity: 80%;
+  }
+  .active {
+    display: block;
+    -webkit-animation: appear 1s ease-in-out;
+            animation: appear 1s ease-in-out;
+    -webkit-transform: translateY(0) scaleY(1);
+            transform: translateY(0) scaleY(1);
+  }
+  @-webkit-keyframes appear {
+    0% {
+      -webkit-transform: translateY(100%) scaleY(1);
+              transform: translateY(100%) scaleY(1);
+    }
+    100% {
+      -webkit-transform: translateY(0) scaleY(1);
+              transform: translateY(0) scaleY(1);
+    }
+  }
+  @keyframes appear {
+    0% {
+      -webkit-transform: translateY(100%) scaleY(1);
+              transform: translateY(100%) scaleY(1);
+    }
+    100% {
+      -webkit-transform: translateY(0) scaleY(1);
+              transform: translateY(0) scaleY(1);
+    }
   }
   .section {
-    padding: 2rem 2.5rem;
+    padding: .5rem 2.5rem;
+  }
+  body {
+    font-size: .9rem;
   }
   header {
     padding: 0;
@@ -1002,11 +1040,16 @@ section {
   header .header-content .right-header .name {
     font-size: 2.5rem !important;
     text-align: center;
-    padding-top: 3rem;
+    padding-top: 0.5rem;
+  }
+  header .header-content .right-header p {
+    margin: 0.7rem 0;
+    line-height: 1.2rem;
   }
   .about-container {
     -ms-grid-columns: (1fr)[1];
         grid-template-columns: repeat(1, 1fr);
+    padding-top: 1.5rem;
   }
   .about-container .right-about {
     -ms-grid-columns: (1fr)[1];
@@ -1016,11 +1059,26 @@ section {
   .about-container .left-about {
     padding-right: 0;
   }
+  .about-container .left-about h4 {
+    font-size: 1.4rem;
+  }
   .about-container .left-about p {
-    padding-left: 0;
+    padding: 1rem 0;
+    line-height: 1.3rem;
   }
   .about-stats {
     padding-bottom: 5rem;
+  }
+  .about-stats .stat-title {
+    padding: 0;
+    padding-bottom: 3.5rem;
+  }
+  .timeline-item {
+    padding: 10px 16px;
+  }
+  .port-text {
+    padding: 0;
+    padding-top: 1rem;
   }
   .portfolios {
     -ms-grid-columns: (1fr)[1];
@@ -1033,6 +1091,7 @@ section {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    padding-top: 1rem;
   }
   .contact-content-con .contact-item {
     -webkit-box-orient: vertical;
@@ -1057,6 +1116,14 @@ section {
   }
   .main-title h2 span {
     font-size: 2.3rem;
+  }
+  .btn-con {
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+  .btn-con .btn-icon {
+    padding: 0.5rem;
   }
 }
 /*# sourceMappingURL=styles.css.map */
