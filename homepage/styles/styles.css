@@ -1039,6 +1039,7 @@ section {
     -ms-grid-row: 1;
     grid-row: 1;
     padding-right: 0rem !important;
+    padding-bottom: 0.2rem;
     width: 90%;
     margin: 0 auto;
     height: -webkit-fit-content;
