@@ -1,6 +1,6 @@
 @media screen and (max-width:1432px){
-    .section{
-        padding: 4rem 11rem;
+    .header-content .right-header{
+        padding-right: 8rem;
     }
 
     .contact-content-con{
@@ -19,15 +19,19 @@
             }
         }
     }
-    
 }
 
 @media screen and (max-width:1250px){
+    .section{
+        padding: 4rem 8rem;
+    }
+
+    .header-content .right-header{
+        padding-right: 0.5rem;
+    }
+
     .portfolios{
         grid-template-columns: repeat(2, 1fr);
-    }
-    .header-content .right-header{
-        padding-right: 9rem;
     }
 
     .timeline {
@@ -83,9 +87,7 @@
             display: none;
         }
         .image{
-            width: 90% !important;
             margin: 0 auto !important;
-            
         }
     }
     .right-header{
@@ -97,6 +99,13 @@
             font-size: 2.5rem !important;
             text-align: center;
             padding-top: 3rem;
+        }
+    }
+
+    .btn-con{
+        align-self: center;
+        .btn-icon{
+            padding: 0.5rem;
         }
     }
 }
@@ -168,6 +177,12 @@
         grid-template-columns: repeat(1, 1fr);
     }
 
+    .portfolios{
+        grid-template-columns: repeat(1, 1fr);
+        padding-bottom: 6rem;
+        margin-top: 1rem;
+    }
+
     .main-title{
         h2{
             font-size: 3rem;
@@ -177,27 +192,6 @@
             .bg-text{
                 font-size: 4rem;
             }
-        }
-    }
-}
-
-@media screen and (max-width:660px){
-    .portfolios{
-        grid-template-columns: repeat(1, 1fr);
-    }
-
-    .controls {
-        top: auto;
-        bottom: 0;
-        flex-direction: row;
-        justify-content: center;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100%;
-        background-color: var(--color-grey-5);
-
-        .control{
-            margin: 1rem .3rem;
         }
     }
 }
@@ -351,6 +345,21 @@
         align-self: center;
         .btn-icon{
             padding: 0.5rem;
+        }
+    }
+
+    .controls {
+        top: auto;
+        bottom: 0;
+        flex-direction: row;
+        justify-content: center;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        background-color: var(--color-grey-5);
+
+        .control{
+            margin: 1rem .3rem;
         }
     }
 }

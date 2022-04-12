@@ -820,8 +820,8 @@ section {
 }
 
 @media screen and (max-width: 1432px) {
-  .section {
-    padding: 4rem 11rem;
+  .header-content .right-header {
+    padding-right: 8rem;
   }
   .contact-content-con {
     -webkit-box-orient: vertical;
@@ -839,12 +839,15 @@ section {
 }
 
 @media screen and (max-width: 1250px) {
+  .section {
+    padding: 4rem 8rem;
+  }
+  .header-content .right-header {
+    padding-right: 0.5rem;
+  }
   .portfolios {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
-  }
-  .header-content .right-header {
-    padding-right: 9rem;
   }
   .timeline {
     max-width: 95%;
@@ -892,7 +895,6 @@ section {
     display: none;
   }
   .left-header .image {
-    width: 90% !important;
     margin: 0 auto !important;
   }
   .right-header {
@@ -906,6 +908,14 @@ section {
     font-size: 2.5rem !important;
     text-align: center;
     padding-top: 3rem;
+  }
+  .btn-con {
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+  .btn-con .btn-icon {
+    padding: 0.5rem;
   }
 }
 
@@ -969,6 +979,12 @@ section {
     -ms-grid-columns: (1fr)[1];
         grid-template-columns: repeat(1, 1fr);
   }
+  .portfolios {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+    padding-bottom: 6rem;
+    margin-top: 1rem;
+  }
   .main-title h2 {
     font-size: 3rem;
   }
@@ -977,32 +993,6 @@ section {
   }
   .main-title h2 .bg-text {
     font-size: 4rem;
-  }
-}
-
-@media screen and (max-width: 660px) {
-  .portfolios {
-    -ms-grid-columns: (1fr)[1];
-        grid-template-columns: repeat(1, 1fr);
-  }
-  .controls {
-    top: auto;
-    bottom: 0;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
-    width: 100%;
-    background-color: var(--color-grey-5);
-  }
-  .controls .control {
-    margin: 1rem .3rem;
   }
 }
 
@@ -1190,6 +1180,25 @@ section {
   }
   .btn-con .btn-icon {
     padding: 0.5rem;
+  }
+  .controls {
+    top: auto;
+    bottom: 0;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    width: 100%;
+    background-color: var(--color-grey-5);
+  }
+  .controls .control {
+    margin: 1rem .3rem;
   }
 }
 /*# sourceMappingURL=styles.css.map */
