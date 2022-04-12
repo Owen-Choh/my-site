@@ -81,8 +81,8 @@ section {
 
 .active {
   display: block;
-  -webkit-animation: appear 1s ease-in-out;
-          animation: appear 1s ease-in-out;
+  -webkit-animation: appear 1.5s ease-in-out;
+          animation: appear 1.5s ease-in-out;
   -webkit-transform: translateY(0) scaleY(1);
           transform: translateY(0) scaleY(1);
 }
@@ -106,6 +106,33 @@ section {
   100% {
     -webkit-transform: translateY(0) scaleY(1);
             transform: translateY(0) scaleY(1);
+  }
+}
+
+.hide {
+  -webkit-animation: hidden 1s ease-in-out;
+          animation: hidden 1s ease-in-out;
+}
+
+@-webkit-keyframes hidden {
+  0% {
+    -webkit-transform: translateY(0) scaleY(1);
+            transform: translateY(0) scaleY(1);
+  }
+  100% {
+    -webkit-transform: translateY(100%) scaleY(1);
+            transform: translateY(100%) scaleY(1);
+  }
+}
+
+@keyframes hidden {
+  0% {
+    -webkit-transform: translateY(0) scaleY(1);
+            transform: translateY(0) scaleY(1);
+  }
+  100% {
+    -webkit-transform: translateY(100%) scaleY(1);
+            transform: translateY(100%) scaleY(1);
   }
 }
 
@@ -377,6 +404,10 @@ section {
   line-height: 2rem;
   padding: 1rem;
   color: var(--color-grey-1);
+}
+
+.about-container .left-about p span {
+  color: var(--color-secondary);
 }
 
 .about-container .left-about h4 {
@@ -790,7 +821,7 @@ section {
 
 @media screen and (max-width: 1432px) {
   .section {
-    padding: 7rem 11rem;
+    padding: 4rem 11rem;
   }
   .contact-content-con {
     -webkit-box-orient: vertical;
@@ -847,7 +878,7 @@ section {
 
 @media screen and (max-width: 970px) {
   .section {
-    padding: 7rem 6rem;
+    padding: 1rem 6rem;
   }
   .about-container .left-about {
     padding-right: 0rem;
@@ -932,7 +963,7 @@ section {
 
 @media screen and (max-width: 700px) {
   .section {
-    padding: 7rem 3rem;
+    padding: 1rem 3rem;
   }
   .about-container .right-about {
     -ms-grid-columns: (1fr)[1];
@@ -982,17 +1013,20 @@ section {
     top: 3%;
     opacity: 80%;
   }
+  .section {
+    padding: 1rem 2.5rem;
+  }
   .active {
     display: block;
-    -webkit-animation: appear 1s ease-in-out;
-            animation: appear 1s ease-in-out;
     -webkit-transform: translateY(0) scaleY(1);
             transform: translateY(0) scaleY(1);
+    -webkit-animation: appear 2s ease-in-out;
+            animation: appear 2s ease-in-out;
   }
   @-webkit-keyframes appear {
     0% {
-      -webkit-transform: translateY(100%) scaleY(1);
-              transform: translateY(100%) scaleY(1);
+      -webkit-transform: translateY(100em) scaleY(1);
+              transform: translateY(100em) scaleY(1);
     }
     100% {
       -webkit-transform: translateY(0) scaleY(1);
@@ -1001,16 +1035,37 @@ section {
   }
   @keyframes appear {
     0% {
-      -webkit-transform: translateY(100%) scaleY(1);
-              transform: translateY(100%) scaleY(1);
+      -webkit-transform: translateY(100em) scaleY(1);
+              transform: translateY(100em) scaleY(1);
     }
     100% {
       -webkit-transform: translateY(0) scaleY(1);
               transform: translateY(0) scaleY(1);
     }
   }
-  .section {
-    padding: .5rem 2.5rem;
+  .hide {
+    -webkit-animation: hidden 1s ease-in-out;
+            animation: hidden 1s ease-in-out;
+  }
+  @-webkit-keyframes hidden {
+    0% {
+      -webkit-transform: translateY(0) scaleY(1);
+              transform: translateY(0) scaleY(1);
+    }
+    100% {
+      -webkit-transform: translateY(-100%) scaleY(1);
+              transform: translateY(-100%) scaleY(1);
+    }
+  }
+  @keyframes hidden {
+    0% {
+      -webkit-transform: translateY(0) scaleY(1);
+              transform: translateY(0) scaleY(1);
+    }
+    100% {
+      -webkit-transform: translateY(-100%) scaleY(1);
+              transform: translateY(-100%) scaleY(1);
+    }
   }
   body {
     font-size: 1rem;
@@ -1022,6 +1077,8 @@ section {
     -ms-grid-columns: (1fr)[1];
         grid-template-columns: repeat(1, 1fr);
     padding-bottom: 4.5rem;
+    -ms-grid-rows: 38vh auto;
+        grid-template-rows: 38vh auto;
   }
   header .header-content .left-header {
     -webkit-box-align: unset;

@@ -1,6 +1,6 @@
 @media screen and (max-width:1432px){
     .section{
-        padding: 7rem 11rem;
+        padding: 4rem 11rem;
     }
 
     .contact-content-con{
@@ -67,7 +67,7 @@
 
 @media screen and (max-width:970px){
     .section{
-        padding: 7rem 6rem;
+        padding: 1rem 6rem;
     }
 
     .about-container .left-about{
@@ -161,7 +161,7 @@
 
 @media screen and (max-width:700px){
     .section{
-        padding: 7rem 3rem;
+        padding: 1rem 3rem;
     }
 
     .about-container .right-about{
@@ -210,19 +210,27 @@
         top: 3%;
         opacity: 80%;
     }
+
+    .section{
+        padding: 1rem 2.5rem;
+    }
     //go up from bottom
     .active {
         display: block;
-        animation: appear 1s ease-in-out;
         transform: translateY(0) scaleY(1);
+        animation: appear 2s ease-in-out;
         @keyframes appear {
-            0%{ transform: translateY(100%) scaleY(1); }
+            0%{ transform: translateY(100em) scaleY(1); }
             100%{ transform: translateY(0) scaleY(1); }
         }
     }
 
-    .section{
-        padding: .5rem 2.5rem;
+    .hide{
+        animation: hidden 1s ease-in-out;
+        @keyframes hidden {
+            0%{ transform: translateY(0) scaleY(1); }
+            100%{ transform: translateY(-100%) scaleY(1); }
+        }
     }
 
     body{
@@ -235,6 +243,7 @@
         .header-content{
             grid-template-columns: repeat(1, 1fr);
             padding-bottom: 4.5rem;
+            grid-template-rows: 38vh auto;
                     
             .left-header{
                 align-items: unset;

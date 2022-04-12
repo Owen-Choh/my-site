@@ -27,11 +27,22 @@ function PageTransitions(){
 
             //hide other sections
             sections.forEach((section)=>{
-                section.classList.remove('active')
+                if(section.classList.contains('active')){
+                    section.classList.add('hide');
+
+                    //wait for the hiding animation to be done
+                    setTimeout(() => {
+                        section.classList.remove('active');
+                        const element = document.getElementById(id);
+                        element.classList.remove('hide');
+                        element.classList.add('active');
+                    }, 700);
+
+                    return;
+                };
             })
 
-            const element = document.getElementById(id);
-            element.classList.add('active');
+            
         }
     })
 
