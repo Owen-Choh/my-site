@@ -2,13 +2,27 @@ const sections = document.querySelectorAll('.section');
 const sectBtns = document.querySelectorAll('.controls');
 const sectBtn = document.querySelectorAll('.control');
 const allSections = document.querySelector('.main-content');
+const timelineBtn = document.querySelectorAll('.timeline-control')
+const timelineSections = document.querySelectorAll('.timeline')
 
 function PageTransitions(){
     //button click active class
     sectBtn.forEach((btn)=>{
         btn.addEventListener('click', function(){
-            let currentBtn = document.querySelectorAll('.active-btn');
-            currentBtn[0].classList.remove('active-btn');
+            let currentBtn = document.querySelectorAll('.control.active-btn');
+            currentBtn.forEach((btn)=>{
+                btn.classList.remove('active-btn');
+            })
+            this.classList.add('active-btn');
+        })
+    })
+
+    timelineBtn.forEach((btn)=>{
+        btn.addEventListener('click', function(){
+            let currentBtn = document.querySelectorAll('.timeline-control.active-btn');
+            currentBtn.forEach((btn)=>{
+                btn.classList.remove('active-btn');
+            })
             this.classList.add('active-btn');
         })
     })
@@ -17,32 +31,44 @@ function PageTransitions(){
     allSections.addEventListener('click', (e) =>{
         const id = e.target.dataset.id;
         if(id){
+            let targetElement = e.target.parentNode;
+            if (targetElement.id == 'controls') {
+                sections.forEach((section)=>{
+                    if(section.classList.contains('active')){
+                        section.classList.add('hide');
+    
+                        //wait for the hiding animation to be done
+                        setTimeout(() => {
+                            section.classList.remove('active');
+                            const element = document.getElementById(id);
+                            element.classList.remove('hide');
+                            element.classList.add('active');
+                        }, 680);
+    
+                        return;
+                    };
+                })
+            } else if (targetElement.id == 'timeline-controls') {
+                timelineSections.forEach((section) => {
+                    if (section.id == id) {
+                        section.classList.add('active-timeline');
+                    } else {
+                        section.classList.remove('active-timeline');
+                    }
+                })
+                return;
+            } else {
+                return;
+            }
             //remove selected from the other btns
             /*
             sectBtns.forEach((btn) =>{
-                btn.classList.remove('active')
+                btn.classList.remove('active-btn')
             })
-            e.target.classList.add('active')
+            e.target.classList.add('active-btn')
             */
 
             //hide other sections
-            sections.forEach((section)=>{
-                if(section.classList.contains('active')){
-                    section.classList.add('hide');
-
-                    //wait for the hiding animation to be done
-                    setTimeout(() => {
-                        section.classList.remove('active');
-                        const element = document.getElementById(id);
-                        element.classList.remove('hide');
-                        element.classList.add('active');
-                    }, 700);
-
-                    return;
-                };
-            })
-
-            
         }
     })
 
@@ -50,7 +76,7 @@ function PageTransitions(){
     const themeBtn = document.querySelector('.theme-btn');
     themeBtn.addEventListener('click',() =>{
         let element = document.body;
-        element.classList.toggle('light-mode')
+        element.classList.toggle('light-mode');
     })
 }
 
@@ -58,11 +84,9 @@ PageTransitions();
 
 //my own stuff
 
-function scriptForTimeline() {
-    const timeline = [['2020','VBA in National Service.'],
-        ['2022','Started this site.'],
-        ['Dec 2021','Learnt how to make my first site for fun.']];
-        
+/*
+//function for timeline but not needed for now
+function scriptForTimeline(timeline) {
     timeline.sort(function(a,b){
         return new Date(b[0]) - new Date(a[0]);
     });
@@ -93,3 +117,4 @@ function scriptForTimeline() {
         currentDiv.appendChild(newCon);
     })
 }
+*/

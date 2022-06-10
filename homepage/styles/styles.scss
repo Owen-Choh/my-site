@@ -44,6 +44,7 @@ body{
     font-size: 1.1rem;
     color: var(--color-white);
     transition: var(--transition-inout);
+    z-index: 1;
 }
 a{
     display: block;
@@ -74,12 +75,39 @@ section {
     background-color: var(--color-primary);
 }
 
+.btn{
+    padding: 1rem;
+    cursor: pointer;
+    background-color: var(--color-grey-4);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: .7rem 0;
+    box-shadow: var(--box-shadow-1);
+
+    i{
+        font-size: 1.2rem;
+        color: var(--color-grey-2);
+        pointer-events: none;
+    }
+}
+.active-btn{
+    background-color: var(--color-secondary) !important ;
+    transition: var(--transition-inout);        
+    i{
+        color: var(--color-white) !important;
+    }
+}
+
 .active {
     display: block;
     animation: appear 1.5s ease-in-out;
     transform: translateY(0) scaleY(1);
     @keyframes appear {
-        0%{ transform: translateY(-100%) scaleY(1); }
+        0%{ transform: translateY(100%) scaleY(1); }
         100%{ transform: translateY(0) scaleY(1); }
     }
 }
@@ -94,8 +122,8 @@ section {
 
 //control buttons
 .controls{
-    position:fixed;
-    z-index: 10;
+    position: fixed;
+    z-index: 999;
     top: 50%;
     right: 3%;
     display: flex;
@@ -103,34 +131,6 @@ section {
     align-items: center;
     justify-content: center;
     transform: translateY(-50%);
-
-    .active-btn{
-        background-color: var(--color-secondary) !important ;
-        transition: var(--transition-inout);        
-        i{
-            color: var(--color-white) !important;
-        }
-    }
-
-    .control{
-        padding: 1rem;
-        cursor: pointer;
-        background-color: var(--color-grey-4);
-        width: 55px;
-        height: 55px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: .7rem 0;
-        box-shadow: var(--box-shadow-1);
-
-        i{
-            font-size: 1.2rem;
-            color: var(--color-grey-2);
-            pointer-events: none;
-        }
-    }
 }
 
 .theme-btn{
@@ -361,112 +361,161 @@ section {
 }
 
 //experience section
-/* The actual timeline (the vertical ruler) */
-.timeline {
-    position: relative;
-    max-width: 1500px;
-    margin: 0 auto;
-
-    /* The actual timeline (the vertical ruler) */
-    &::after {
-        content: '';
-        position: absolute;
-        width: 6px;
-        background-color: var(--color-grey-1);
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        margin-left: -3px;
-    }
-}
-  
-/* Container around content */
-.timeline-con {
-    padding: 10px 40px;
-    position: relative;
-    background-color: inherit;
-    width: 50%;
-
-    /* The circles on the timeline */
-    &::after {
-        content: '';
-        position: absolute;
-        width: 25px;
-        height: 25px;
-        right: -17px;
-        background-color: var(--color-grey-1);
-        border: 4px solid var(--color-secondary);
-        top: 15px;
-        border-radius: 50%;
-        z-index: 1;
-    }
-}
-  
-/* Place the container to the left */
-.left {
-    left: 0;
+.timeline-container{
+    //timeline controls
+    .timeline-controls{
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
     
-    /* Add arrows to the left container (pointing right) */
-    &::before {
-        content: "";
-        position: absolute;
-        height: 30px;
-        width: 20px;
-        z-index: 1;
-        top: 17px;
-        right: 27px;
-        background-color: var(--color-grey-5);
-        clip-path: polygon(100% 50%, 0 0, 0 100%);
-    }
-}
-  
-/* Place the container to the right */
-.right {
-    left: 50%;
-
-    /* Add arrows to the right container (pointing left) */
-    &::before {
-        content: "";
-        position: absolute;
-        height: 30px;
-        width: 20px;
-        z-index: 1;
-        top: 17px;
-        left: 27px;
-        background-color: var(--color-grey-5);
-        clip-path: polygon(0 50%, 100% 0, 100% 100%);
-    }
-
-    /* Fix the circle for containers on the right side */
-    &::after {
-        left: -16px;
-    }
-}
-  
-/* The actual content */
-.timeline-item {
-    padding: 20px 30px;
-    background-color: var(--color-grey-5);
-    position: relative;
-    border-radius: 6px;
-    box-shadow: var(--box-shadow-2);
-    
-    h2{
-        color: var(--color-white);
-        transition: var(--transition-inout);
-    }
-
-    &:hover{
-        h2{
-            color: var(--color-secondary);
+        .active-btn{
+            background-color: var(--color-secondary) !important ;
+            transition: var(--transition-inout);        
+            i{
+                color: var(--color-white) !important;
+            }
         }
     }
+    
+    /* The actual timeline (the vertical ruler) */
+    .timeline-sections {
+        section{
+            min-height: 100vh;
+            width: 100%;
+            padding: 0;
+        }
 
-    p{
-        color: var(--color-grey-2);
+        .timeline {
+            display: none;
+            position: relative;
+            max-width: 1500px;
+            margin: 0 auto;
+            transition: var(--transition-inout);
+            /* The actual timeline (the vertical ruler) */
+            &::after {
+                content: '';
+                position: absolute;
+                width: 6px;
+                background-color: var(--color-grey-1);
+                top: 0;
+                bottom: 0;
+                left: 50%;
+                margin-left: -3px;
+            }
+            
+            //line on top of vertical line
+            &::before{
+                content: '';
+                position: absolute;
+                left: 25%;
+                top: -2px;
+                width: 50%;
+                height: 2px;
+                background-color: var(--color-grey-5);
+            }
+        }
+        .active-timeline{
+            display: block;
+            
+            animation: fade-in 1s ease-in-out;
+            @keyframes fade-in {
+                0%{ opacity: 0; }
+                100%{ opacity: 1; }
+            }
+        }
+          
+        /* Container around content */
+        .timeline-con {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
         
-        span{
-            color: var(--color-secondary);
+            /* The circles on the timeline */
+            &::after {
+                content: '';
+                position: absolute;
+                width: 25px;
+                height: 25px;
+                right: -17px;
+                background-color: var(--color-grey-1);
+                border: 4px solid var(--color-secondary);
+                top: 15px;
+                border-radius: 50%;
+                z-index: 1;
+            }
+        }
+          
+        /* Place the container to the left */
+        .left {
+            left: 0;
+            
+            /* Add arrows to the left container (pointing right) */
+            &::before {
+                content: "";
+                position: absolute;
+                height: 30px;
+                width: 20px;
+                z-index: 1;
+                top: 17px;
+                right: 27px;
+                background-color: var(--color-grey-5);
+                clip-path: polygon(100% 50%, 0 0, 0 100%);
+            }
+        }
+          
+        /* Place the container to the right */
+        .right {
+            left: 50%;
+        
+            /* Add arrows to the right container (pointing left) */
+            &::before {
+                content: "";
+                position: absolute;
+                height: 30px;
+                width: 20px;
+                z-index: 1;
+                top: 17px;
+                left: 27px;
+                background-color: var(--color-grey-5);
+                clip-path: polygon(0 50%, 100% 0, 100% 100%);
+            }
+        
+            /* Fix the circle for containers on the right side */
+            &::after {
+                left: -16px;
+            }
+        }
+          
+        /* The actual content */
+        .timeline-item {
+            padding: 20px 30px;
+            background-color: var(--color-grey-5);
+            position: relative;
+            border-radius: 6px;
+            box-shadow: var(--box-shadow-2);
+            
+            h2{
+                color: var(--color-white);
+                transition: var(--transition-inout);
+            }
+        
+            &:hover{
+                h2{
+                    color: var(--color-secondary);
+                }
+            }
+        
+            p{
+                color: var(--color-grey-2);
+                
+                span{
+                    color: var(--color-secondary);
+                }
+            }
         }
     }
 }
@@ -551,12 +600,18 @@ section {
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
             span{
                 color: var(--color-secondary);
             }
             p {
                 margin: .3rem 0 !important;
                 padding: 0 !important;
+                &:hover {
+                    a{
+                        text-decoration: underline;
+                    }
+                }
             }
         }
     }

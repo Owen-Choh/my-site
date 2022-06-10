@@ -28,8 +28,11 @@
                     Hi, I'm <span class="name">Owen</span>.
                 </h1>
                 <p>
-                    I'm a computer science student, I love learning and creating programs.
-                    Which includes multiple projects which helped my team during National Service.
+                    I'm a computer science student enrolled in the Nanyang Technological University in Singapore in Aug 2022, 
+                    Even though I have no formal training prior to this, 
+                    I am a fast learner 
+                    who enjoys learning new stuff on my own and creating programs.
+                    Which includes multiple projects that helped my team to do their work more easily during National Service.
                     You can find more information about me in the other sections.
                 </p>
                 <div class="btn-con">
@@ -50,9 +53,12 @@
                 <div class="left-about">
                     <h4>Information About Me</h4>
                     <p>
-                        I'm a computer science student enrolled in the Nanyang Technological University in Singapore in Aug 2022. One of the things I am interested in is making scripts that help 
-                        people to do their work more easily and quickly as displayed in the multiple projects I worked on.
-                    </p>
+                        I created multiple scripts and projects throughout my life
+                        and they provide the foundation for me to pick up 
+                        other skills more quickly.
+                        Scroll down to see a list of my skills which might be helpful to you.
+                        I am currently interested in internships while I study for my degree.
+                    </p>    
                     <div class="btn-con">
                         <a href="files/Owen's Resume.pdf" class="main-btn" target="_blank">
                             <span class="btn-text">Download CV</span>
@@ -65,6 +71,12 @@
                         <div class="abt-text">
                             <p class="large-text">8</p>
                             <p class="small-text">VBA Projects <br /> Completed</p>
+                        </div>
+                    </div>
+                    <div class="about-item">
+                        <div class="abt-text">
+                            <p class="large-text">2</p>
+                            <p class="small-text">Websites <br /> Created</p>
                         </div>
                     </div>
                 </div>
@@ -85,16 +97,13 @@
                                 <td>Python</td>
                             </tr>
                             <tr>
-                                <td>Microsoft VBA</td>
+                                <td>Microsoft VBA (i.e. Automation for Microsoft Excel)</td>
                             </tr>
                             <tr>
-                                <td>JavaScript</td>
+                                <td>Frontend Website Development (HTML, CSS, JavaScript, SASS)</td>
                             </tr>
                             <tr>
-                                <td>HTML</td>
-                            </tr>
-                            <tr>
-                                <td>CSS</td>
+                                <td>Google Apps Script (i.e. Automation for Google Sheets)</td>
                             </tr>
                             <tr>
                                 <td>Microsoft Office (Excel, Word, PowerPoint)</td>
@@ -131,58 +140,143 @@
             <div class="main-title">
                 <h2>My <span>Experience</span><span class="bg-text">My Timeline</span></h2>
             </div>
-            <div class="timeline">
-                <!-- timeline -->
-                <script type="text/javascript">
-                    const timeline = [['2020',`Posted to the Singapore Armed Forces Ammunition Command Headquarters (HQ SAFAC) as a <span>General Affiars Clerk</span>. 
-                    My primary responsibility was to collaborate with the 16 different branches of the unit to meet KPIs consistently.
-                    I was also required to aid my superior in writing reports and collating requests from other branches.
-                    During my time, I also spearheaded the indenting of the care package that was distributed across the Unit.
-                    More importantly, 
-                    I picked up and became proficient in <span>Microsoft VBA</span> while serving National Service, which I employed to create multiple automation scripts used across the HR branch of HQ SAFAC
-                    ,<span>substantially</span> reducing the workload and time required for our admin processes.`]
-                        ,['Apr 2022','<span>Started this site.</span>']
-                        ,['Dec 2021','Learnt how to make <span>my first site</span> through a workshop in National Service. It has many flaws but the page was just for fun.']
-                        ,['Aug 2022','Began my <span>Computer Science Degree</span> in Nanyang Technological University in Singapore']
-                        ,['Jan 2022',"Completed the course: <span>CS50's Introduction to Computer Science</span>"]
-                        ,['2018',`I worked as the <span>Quartermaster</span> of the Media Resource Crew at Anglo Chinese Junior College 
-                        where I took charge of the school's Audio-Visual equipment list and
-                        liaised with the school’s technician to replace and maintain the equipment.
-                        I was awarded <span>Outstanding Service</span> by Anglo Chinese Junior College in 2019.
-                        `]
-                        ,['Before...','I started learning programming on Codecademy however I did not document when I started learning these skills. But it was were I learnt the basics of programming and the major languages I picked up were <span>Python</span> and <span>JavaScript</span>']
-                    ];
+            <div class="timeline-container">
+                <div class="timeline-controls" id="timeline-controls">
+                    <div class="timeline-control active-btn btn" data-id="timeline-all">
+                        <i class="fa-solid fa-border-all"></i>
+                    </div>
+                    <div class="timeline-control btn" data-id="timeline-work">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <div class="timeline-control btn" data-id="timeline-skills">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div class="timeline-control btn" data-id="timeline-awards">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                </div>
+                <div class="timeline-sections">
+                    <!-- timelines -->
+                    <script type="text/javascript">
+                        function scriptForTimeline(timeline, currentDivId) {
+                            var newA, newB;
+                            timeline.sort(function(a,b){
+                                (b[0].indexOf('-') !== -1 || b[0].indexOf('&') !== -1) ? newB = b[0].slice(-4) :  newB = b[0];
+                                (a[0].indexOf('-') !== -1 || a[0].indexOf('&') !== -1) ? newA = a[0].slice(-4) :  newA = a[0];
+                                return new Date(newB) - new Date(newA);
+                            });
 
-                    timeline.sort(function(a,b){
-                        return new Date(b[0]) - new Date(a[0]);
-                    });
+                            timeline.forEach(function(item, index){
+                                // create a new div element
+                                let newCon = document.createElement("div");
+                                newCon.className = "timeline-con";
+                                (index%2 == 0) ? newCon.classList.add("left") : newCon.classList.add("right");
+                            
+                                let newItem = document.createElement("div");
+                                newItem.className = "timeline-item";
+                                
+                                // and give it some content
+                                let newHDiv = document.createElement("h2");
+                                newHDiv.innerHTML = item[0];
 
-                    timeline.forEach(function(item, index){
-                        // create a new div element
-                        let newCon = document.createElement("div");
-                        newCon.className = "timeline-con";
-                        (index%2 == 0) ? newCon.classList.add("left") : newCon.classList.add("right");
-                    
-                        let newItem = document.createElement("div");
-                        newItem.className = "timeline-item";
-                        
-                        // and give it some content
-                        let newHDiv = document.createElement("h2");
-                        newHDiv.innerHTML = item[0];
-
-                        let newPDiv = document.createElement("p");
-                        newPDiv.innerHTML = item[1];
-                        
-                        // add the text node to the newly created div
-                        newItem.append(newHDiv,newPDiv);
-                        newCon.appendChild(newItem);
-                    
-                        // add the newly created element and its content into the DOM
-                        let currentDiv = document.getElementsByClassName("timeline")[0];
-                        currentDiv.appendChild(newCon);
-                    })
-                </script>
-              </div>
+                                let newPDiv = document.createElement("p");
+                                newPDiv.innerHTML = item[1];
+                                
+                                // add the text node to the newly created div
+                                newItem.append(newHDiv,newPDiv);
+                                newCon.appendChild(newItem);
+                            
+                                // add the newly created element and its content into the DOM
+                                let currentDiv = document.getElementById(currentDivId);
+                                currentDiv.appendChild(newCon);
+                            })
+                        }
+                    </script>
+                    <section class="timeline active-timeline" id="timeline-all">
+                        <script type="text/javascript">
+                            const timeline = [['2020',`Posted to the Singapore Armed Forces Ammunition Command Headquarters (HQ SAFAC) as a <span>General Affiars Clerk</span>. 
+                            My primary responsibility was to collaborate with the 16 different branches of the unit to meet KPIs consistently. 
+                            One of my tasks was to edit servicemen’s transcripts to resolve conflicting requirements of
+                            both the branch heads and the Commanding Officer of the Unit. 
+                            I was also required to aid my superior in writing reports and collating requests from other branches.
+                            During my time, I also spearheaded the indenting of the care package that was distributed across the Unit.
+                            More importantly, the foundation that I learnt in other programming languages have helped me to quickly be
+                            proficient in <span>Microsoft VBA</span> while serving National Service, which I employed to create multiple automation scripts used across the HR branch of HQ SAFAC,
+                            <span>substantially</span> reducing the workload and time required for our admin processes.`]
+                                ,['Apr 2022','<span>Started this site.</span>']
+                                ,['Dec 2021','Learnt how to make <span>my first site</span> through a workshop in National Service just for fun.']
+                                ,['Jan 2022',"Completed the course: <span>CS50's Introduction to Computer Science</span>"]
+                                ,['2018',`I worked as the <span>Quartermaster</span> of the Media Resource Crew at Anglo Chinese Junior College 
+                                where I took charge of the school's Audio-Visual equipment list and
+                                liaised with the school’s technician to replace and maintain the equipment.
+                                I was awarded <span>Outstanding Service</span> by Anglo Chinese Junior College in 2019.`]
+                                ,['Aug 2022','Began my <span>Computer Science Degree</span> in Nanyang Technological University in Singapore']
+                                ,['2018-2019',"Obtained 85 Rank Points for the Singapore Cambridge GCE Advanced Level, studying at Anglo Chinese Junior College"]
+                                ,['2018 & 2019','Southwest CDC - CCC Education Merit Award']
+                                ,['2017','National Youth Achievement Award Scheme (NYAA) - Silver']
+                                ,['2018','Edusave Certificate Of Academic Achievement']
+                                ,['2014-2017',"Obtained 6 Distinctions for the Singapore Cambridge GCE Ordinary Level, studying at Nan Hua High School"]
+                                ,['2017','Singapore Junior Chemistry Olympiad - Bronze']
+                                ,['2015','Asia Pacific Youth Robotics Competition (APYRC) Winter Games - Silver Medal']
+                                ,['2017','SAC Book Prize By Nan Hua High School for outstanding O level performance']
+                                ,['Before...','I started learning programming on Codecademy. I learnt the basics of programming and the major languages I picked up were <span>Python</span> and <span>JavaScript</span>']
+                            ];
+                            scriptForTimeline(timeline, "timeline-all");
+                        </script>
+                    </section>
+                    <section class="timeline" id="timeline-work">
+                        <script type="text/javascript">
+                            const timelineWork = [['2020',`Posted to the Singapore Armed Forces Ammunition Command Headquarters (HQ SAFAC) as a <span>General Affiars Clerk</span>. 
+                            My primary responsibility was to collaborate with the 16 different branches of the unit to meet KPIs consistently. 
+                            One of my tasks was to edit servicemen’s transcripts to resolve conflicting requirements of
+                            both the branch heads and the Commanding Officer of the Unit. 
+                            I was also required to aid my superior in writing reports and collating requests from other branches.
+                            During my time, I also spearheaded the indenting of the care package that was distributed across the Unit.
+                            More importantly, the foundation that I learnt in other programming languages have helped me to quickly be
+                            proficient in <span>Microsoft VBA</span> while serving National Service, which I employed to create multiple automation scripts used across the HR branch of HQ SAFAC,
+                            <span>substantially</span> reducing the workload and time required for our admin processes.`]
+                                ,['Apr 2022','<span>Started this site.</span>']
+                                ,['2018',`I worked as the <span>Quartermaster</span> of the Media Resource Crew at Anglo Chinese Junior College 
+                                where I took charge of the school's Audio-Visual equipment list and
+                                liaised with the school’s technician to replace and maintain the equipment.
+                                I was awarded <span>Outstanding Service</span> by Anglo Chinese Junior College in 2019.`]
+                            ];
+                            scriptForTimeline(timelineWork, "timeline-work");
+                        </script>
+                    </section>
+                    <section class="timeline" id="timeline-skills">
+                        <script type="text/javascript">
+                            const timelineSkills = [['2020',`I became proficient in <span>Microsoft VBA</span> 
+                            while serving National Service, which I employed to create multiple automation scripts used across the HR branch of HQ SAFAC,
+                            <span>substantially</span> reducing the workload and time required for our admin processes.
+                            I've also rapidly established proficiency with Microsoft Office to organize key data in monthly reports.`]
+                                ,['Apr 2022','<span>Started this site.</span>']
+                                ,['Dec 2021','Learnt how to make <span>my first site</span> through a workshop in National Service just for fun.']
+                                ,['Aug 2022','Began my <span>Computer Science Degree</span> in Nanyang Technological University in Singapore']
+                                ,['Jan 2022',"Completed the course: <span>CS50's Introduction to Computer Science</span>"]
+                                ,['2018-2019',"Obtained 85 Rank Points for the Singapore Cambridge GCE Advanced Level, studying at Anglo Chinese Junior College"]
+                                ,['2014-2017',"Obtained 6 Distinctions for the Singapore Cambridge GCE Ordinary Level, studying at Nan Hua High School"]
+                                ,['Before...','I started learning programming on Codecademy. I learnt the basics of programming and the major languages I picked up were <span>Python</span> and <span>JavaScript</span>']
+                            ];
+                            scriptForTimeline(timelineSkills, "timeline-skills");
+                        </script>
+                    </section>
+                    <section class="timeline" id="timeline-awards">
+                        <script type="text/javascript">
+                            const timelineAwards = [['Apr 2022','<span>Started this site.</span>']
+                                ,['2018 & 2019','Southwest CDC - CCC Education Merit Award']
+                                ,['2017','National Youth Achievement Award Scheme (NYAA) - Silver']
+                                ,['2018','Edusave Certificate Of Academic Achievement']
+                                ,['2017','Singapore Junior Chemistry Olympiad - Bronze']
+                                ,['2015','Asia Pacific Youth Robotics Competition (APYRC) Winter Games - Silver Medal']
+                                ,['2019','Outstanding Service by Anglo Chinese Junior College']
+                                ,['2017','SAC Book Prize By Nan Hua High School for outstanding O level performance']
+                            ];
+                            scriptForTimeline(timelineAwards, "timeline-awards");
+                        </script>
+                    </section>
+                </div>
+            </div>
         </section>
         
         <section class="section" id="portfolios">
@@ -191,20 +285,20 @@
                     <h2>My <span>Portfolio</span><span class="bg-text">My work</span></h2>
                 </div>
                 <p class="port-text">
-                    Here's some of my work.<br>
-                    (Hint: Click on the image)
+                    Here's some of my work.
                 </p>
                 <div class="portfolios">
-                    <div class="portfolio">
+                    <div class="portfolio" style="display: none;" id="template-portfolio-item">
                         <a href="https://youtu.be/xV7S8BhIeBo" target="_blank">
                             <img src="img/my image.png" alt="">
                         </a>
                         <div class="portfolio-text">
                             <h4>
-                                How to Create Your Own Website
+                                Portfolio Project Title
                             </h4>
                             <p>
-                                If you like to create your own website, this is the tutorial I followed to create this website.
+                                You found my template item :o
+                                That said, if you'd like to create your own website, this is the tutorial I followed to create this website.
                             </p>
                         </div>
                     </div>
@@ -230,7 +324,9 @@
                                 Automation with Microsoft VBA
                             </h4>
                             <p>
-                                I made multiple automation scripts in VBA to automate data processing. However, I can't put my NS projects here due to restriction, but you can learn about what VBA is in the link.
+                                I made multiple automation scripts in VBA to automate data analysis and processing. 
+                                Unfortunately, I cannot put my NS projects here due to restrictions, 
+                                but you can click to learn more about what VBA can do for you.
                             </p>
                         </div>
                     </div>
@@ -259,7 +355,9 @@
                             <span>Email</span>
                         </div>
                         <p>
-                            : owen.choh@gmail.com
+                            <a href="mailto:owen.choh@gmail.com">
+                                : owen.choh@gmail.com
+                            </a>
                         </p>
                     </div>
                     <div class="contact-item">
@@ -277,7 +375,9 @@
                             <span>Mobile Number</span>
                         </div>
                         <p>
-                            : 96465905
+                            <a href="https://wa.me/6596465905" target="_blank">
+                                : 96465905
+                            </a>
                         </p>
                     </div>
                     <div class="contact-item">
@@ -290,7 +390,7 @@
                         </p>
                     </div>
                     <div class="btn-con" style="justify-content: center; padding-top: 0.5rem;">
-                        <a href="files/Owen's Resume.pdf" class="main-btn" target=TODO()>
+                        <a href="files/Owen's Resume.pdf" class="main-btn">
                             <span class="btn-text">Download CV</span>
                             <span class="btn-icon"><i class="fa-solid fa-download"></i></span>
                         </a>
@@ -299,20 +399,20 @@
         </section>
     </main>
 
-    <div class="controls">
-        <div class="control active-btn" data-id="home">
+    <div class="controls" id="controls">
+        <div class="control btn active-btn" data-id="home">
             <i class="fa-solid fa-house"></i>
         </div>
-        <div class="control" data-id="about">
+        <div class="control btn" data-id="about">
             <i class="fa-solid fa-user"></i>
         </div>
-        <div class="control" data-id="experience">
+        <div class="control btn" data-id="experience">
             <i class="fa-solid fa-newspaper"></i>
         </div>
-        <div class="control" data-id="portfolios">
+        <div class="control btn" data-id="portfolios">
             <i class="fa-solid fa-briefcase"></i>
         </div>
-        <div class="control" data-id="contact">
+        <div class="control btn" data-id="contact">
             <i class="fa-solid fa-envelope"></i>
         </div>
     </div>

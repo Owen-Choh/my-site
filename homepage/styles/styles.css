@@ -46,6 +46,7 @@ body {
   color: var(--color-white);
   -webkit-transition: var(--transition-inout);
   transition: var(--transition-inout);
+  z-index: 1;
 }
 
 a {
@@ -79,6 +80,43 @@ section {
   background-color: var(--color-primary);
 }
 
+.btn {
+  padding: 1rem;
+  cursor: pointer;
+  background-color: var(--color-grey-4);
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: .7rem 0;
+  -webkit-box-shadow: var(--box-shadow-1);
+          box-shadow: var(--box-shadow-1);
+}
+
+.btn i {
+  font-size: 1.2rem;
+  color: var(--color-grey-2);
+  pointer-events: none;
+}
+
+.active-btn {
+  background-color: var(--color-secondary) !important;
+  -webkit-transition: var(--transition-inout);
+  transition: var(--transition-inout);
+}
+
+.active-btn i {
+  color: var(--color-white) !important;
+}
+
 .active {
   display: block;
   -webkit-animation: appear 1.5s ease-in-out;
@@ -89,8 +127,8 @@ section {
 
 @-webkit-keyframes appear {
   0% {
-    -webkit-transform: translateY(-100%) scaleY(1);
-            transform: translateY(-100%) scaleY(1);
+    -webkit-transform: translateY(100%) scaleY(1);
+            transform: translateY(100%) scaleY(1);
   }
   100% {
     -webkit-transform: translateY(0) scaleY(1);
@@ -100,8 +138,8 @@ section {
 
 @keyframes appear {
   0% {
-    -webkit-transform: translateY(-100%) scaleY(1);
-            transform: translateY(-100%) scaleY(1);
+    -webkit-transform: translateY(100%) scaleY(1);
+            transform: translateY(100%) scaleY(1);
   }
   100% {
     -webkit-transform: translateY(0) scaleY(1);
@@ -138,7 +176,7 @@ section {
 
 .controls {
   position: fixed;
-  z-index: 10;
+  z-index: 999;
   top: 50%;
   right: 3%;
   display: -webkit-box;
@@ -156,43 +194,6 @@ section {
           justify-content: center;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-}
-
-.controls .active-btn {
-  background-color: var(--color-secondary) !important;
-  -webkit-transition: var(--transition-inout);
-  transition: var(--transition-inout);
-}
-
-.controls .active-btn i {
-  color: var(--color-white) !important;
-}
-
-.controls .control {
-  padding: 1rem;
-  cursor: pointer;
-  background-color: var(--color-grey-4);
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: .7rem 0;
-  -webkit-box-shadow: var(--box-shadow-1);
-          box-shadow: var(--box-shadow-1);
-}
-
-.controls .control i {
-  font-size: 1.2rem;
-  color: var(--color-grey-2);
-  pointer-events: none;
 }
 
 .theme-btn {
@@ -486,15 +487,62 @@ section {
   background-color: var(--color-grey-5);
 }
 
-/* The actual timeline (the vertical ruler) */
-.timeline {
-  position: relative;
-  max-width: 1500px;
-  margin: 0 auto;
+.timeline-container {
   /* The actual timeline (the vertical ruler) */
 }
 
-.timeline::after {
+.timeline-container .timeline-controls {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 1rem;
+}
+
+.timeline-container .timeline-controls .active-btn {
+  background-color: var(--color-secondary) !important;
+  -webkit-transition: var(--transition-inout);
+  transition: var(--transition-inout);
+}
+
+.timeline-container .timeline-controls .active-btn i {
+  color: var(--color-white) !important;
+}
+
+.timeline-container .timeline-sections {
+  /* Container around content */
+  /* Place the container to the left */
+  /* Place the container to the right */
+  /* The actual content */
+}
+
+.timeline-container .timeline-sections section {
+  min-height: 100vh;
+  width: 100%;
+  padding: 0;
+}
+
+.timeline-container .timeline-sections .timeline {
+  display: none;
+  position: relative;
+  max-width: 1500px;
+  margin: 0 auto;
+  -webkit-transition: var(--transition-inout);
+  transition: var(--transition-inout);
+  /* The actual timeline (the vertical ruler) */
+}
+
+.timeline-container .timeline-sections .timeline::after {
   content: '';
   position: absolute;
   width: 6px;
@@ -505,8 +553,41 @@ section {
   margin-left: -3px;
 }
 
-/* Container around content */
-.timeline-con {
+.timeline-container .timeline-sections .timeline::before {
+  content: '';
+  position: absolute;
+  left: 25%;
+  top: -2px;
+  width: 50%;
+  height: 2px;
+  background-color: var(--color-grey-5);
+}
+
+.timeline-container .timeline-sections .active-timeline {
+  display: block;
+  -webkit-animation: fade-in 1s ease-in-out;
+          animation: fade-in 1s ease-in-out;
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.timeline-container .timeline-sections .timeline-con {
   padding: 10px 40px;
   position: relative;
   background-color: inherit;
@@ -514,7 +595,7 @@ section {
   /* The circles on the timeline */
 }
 
-.timeline-con::after {
+.timeline-container .timeline-sections .timeline-con::after {
   content: '';
   position: absolute;
   width: 25px;
@@ -527,13 +608,12 @@ section {
   z-index: 1;
 }
 
-/* Place the container to the left */
-.left {
+.timeline-container .timeline-sections .left {
   left: 0;
   /* Add arrows to the left container (pointing right) */
 }
 
-.left::before {
+.timeline-container .timeline-sections .left::before {
   content: "";
   position: absolute;
   height: 30px;
@@ -546,14 +626,13 @@ section {
           clip-path: polygon(100% 50%, 0 0, 0 100%);
 }
 
-/* Place the container to the right */
-.right {
+.timeline-container .timeline-sections .right {
   left: 50%;
   /* Add arrows to the right container (pointing left) */
   /* Fix the circle for containers on the right side */
 }
 
-.right::before {
+.timeline-container .timeline-sections .right::before {
   content: "";
   position: absolute;
   height: 30px;
@@ -566,12 +645,11 @@ section {
           clip-path: polygon(0 50%, 100% 0, 100% 100%);
 }
 
-.right::after {
+.timeline-container .timeline-sections .right::after {
   left: -16px;
 }
 
-/* The actual content */
-.timeline-item {
+.timeline-container .timeline-sections .timeline-item {
   padding: 20px 30px;
   background-color: var(--color-grey-5);
   position: relative;
@@ -580,21 +658,21 @@ section {
           box-shadow: var(--box-shadow-2);
 }
 
-.timeline-item h2 {
+.timeline-container .timeline-sections .timeline-item h2 {
   color: var(--color-white);
   -webkit-transition: var(--transition-inout);
   transition: var(--transition-inout);
 }
 
-.timeline-item:hover h2 {
+.timeline-container .timeline-sections .timeline-item:hover h2 {
   color: var(--color-secondary);
 }
 
-.timeline-item p {
+.timeline-container .timeline-sections .timeline-item p {
   color: var(--color-grey-2);
 }
 
-.timeline-item p span {
+.timeline-container .timeline-sections .timeline-item p span {
   color: var(--color-secondary);
 }
 
@@ -702,6 +780,7 @@ section {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  text-align: center;
 }
 
 .contact-content-con .contact-info .contact-item span {
@@ -711,6 +790,10 @@ section {
 .contact-content-con .contact-info .contact-item p {
   margin: .3rem 0 !important;
   padding: 0 !important;
+}
+
+.contact-content-con .contact-info .contact-item p:hover a {
+  text-decoration: underline;
 }
 
 .btn-con {
@@ -849,13 +932,13 @@ section {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
   }
-  .timeline {
+  .timeline-sections {
     max-width: 95%;
   }
-  .timeline .left {
+  .timeline-sections .left {
     padding-left: 0;
   }
-  .timeline .right {
+  .timeline-sections .right {
     padding-right: 0;
   }
 }
@@ -920,28 +1003,30 @@ section {
 }
 
 @media screen and (max-width: 900px) {
-  .timeline {
+  .timeline-sections {
     padding-bottom: 6rem;
+  }
+  .timeline-sections .timeline {
     /* Place the container and the arrows */
   }
-  .timeline::after {
+  .timeline-sections .timeline::after {
     content: '';
     position: absolute;
     width: 6px;
     background-color: var(--color-grey-1);
     top: 0;
     bottom: 0;
-    left: 0;
+    left: 0 !important;
     margin-left: -3px;
   }
-  .timeline .timeline-con {
+  .timeline-sections .timeline .timeline-con {
     padding: 10px 0 10px 40px;
     position: relative;
     background-color: inherit;
     width: 100%;
     /* The circles on the timeline */
   }
-  .timeline .timeline-con::after {
+  .timeline-sections .timeline .timeline-con::after {
     content: '';
     position: absolute;
     width: 25px;
@@ -953,11 +1038,11 @@ section {
     border-radius: 50%;
     z-index: 1;
   }
-  .timeline .left, .timeline .right {
+  .timeline-sections .timeline .left, .timeline-sections .timeline .right {
     left: 0;
     /* Add arrows to the left container (pointing right) */
   }
-  .timeline .left::before, .timeline .right::before {
+  .timeline-sections .timeline .left::before, .timeline-sections .timeline .right::before {
     content: "";
     position: absolute;
     height: 30px;
@@ -994,6 +1079,10 @@ section {
   .main-title h2 .bg-text {
     font-size: 4rem;
   }
+  .header-content {
+    -ms-grid-rows: unset;
+        grid-template-rows: unset;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -1008,29 +1097,27 @@ section {
   }
   .active {
     display: block;
-    -webkit-transform: translateY(0) scaleY(1);
-            transform: translateY(0) scaleY(1);
     -webkit-animation: appear 2s ease-in-out;
             animation: appear 2s ease-in-out;
   }
   @-webkit-keyframes appear {
     0% {
-      -webkit-transform: translateY(100em) scaleY(1);
-              transform: translateY(100em) scaleY(1);
+      -webkit-transform: translateX(-100%);
+              transform: translateX(-100%);
     }
     100% {
-      -webkit-transform: translateY(0) scaleY(1);
-              transform: translateY(0) scaleY(1);
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
     }
   }
   @keyframes appear {
     0% {
-      -webkit-transform: translateY(100em) scaleY(1);
-              transform: translateY(100em) scaleY(1);
+      -webkit-transform: translateX(-100%);
+              transform: translateX(-100%);
     }
     100% {
-      -webkit-transform: translateY(0) scaleY(1);
-              transform: translateY(0) scaleY(1);
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
     }
   }
   .hide {
@@ -1039,22 +1126,22 @@ section {
   }
   @-webkit-keyframes hidden {
     0% {
-      -webkit-transform: translateY(0) scaleY(1);
-              transform: translateY(0) scaleY(1);
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
     }
     100% {
-      -webkit-transform: translateY(-100%) scaleY(1);
-              transform: translateY(-100%) scaleY(1);
+      -webkit-transform: translateX(-100%);
+              transform: translateX(-100%);
     }
   }
   @keyframes hidden {
     0% {
-      -webkit-transform: translateY(0) scaleY(1);
-              transform: translateY(0) scaleY(1);
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
     }
     100% {
-      -webkit-transform: translateY(-100%) scaleY(1);
-              transform: translateY(-100%) scaleY(1);
+      -webkit-transform: translateX(-100%);
+              transform: translateX(-100%);
     }
   }
   body {
@@ -1067,8 +1154,6 @@ section {
     -ms-grid-columns: (1fr)[1];
         grid-template-columns: repeat(1, 1fr);
     padding-bottom: 4.5rem;
-    -ms-grid-rows: 38vh auto;
-        grid-template-rows: 38vh auto;
   }
   header .header-content .left-header {
     -webkit-box-align: unset;
